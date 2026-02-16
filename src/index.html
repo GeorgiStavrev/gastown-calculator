@@ -10,7 +10,19 @@
     <div class="calculator">
       <div class="display">
         <button class="mode-toggle" id="mode-toggle">Sci</button>
+        <button class="mode-toggle formula-toggle" id="formula-toggle">f(x)</button>
         <span class="display-value" id="display">0</span>
+      </div>
+      <div class="formula-panel" id="formula-panel">
+        <div class="formula-input-row">
+          <input type="text" id="formula-expression" placeholder="e.g. x * 2 + y" spellcheck="false" />
+        </div>
+        <div class="formula-variables" id="formula-variables"></div>
+        <div class="formula-actions">
+          <button class="btn-formula" id="formula-eval">Evaluate</button>
+          <button class="btn-formula" id="formula-save">Save</button>
+        </div>
+        <div class="formula-list" id="formula-list"></div>
       </div>
       <div class="scientific-buttons">
         <button class="btn-scientific" data-action="scientific" data-value="sin">sin</button>
