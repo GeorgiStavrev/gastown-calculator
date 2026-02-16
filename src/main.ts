@@ -25,6 +25,7 @@ let activeOperator: string | null = null;
 const display = document.getElementById("display")!;
 const calculator = document.querySelector(".calculator")!;
 const modeToggle = document.getElementById("mode-toggle")!;
+const themeToggle = document.getElementById("theme-toggle")!;
 const formulaToggle = document.getElementById("formula-toggle")!;
 const formulaExpression = document.getElementById("formula-expression") as HTMLInputElement;
 const formulaVariables = document.getElementById("formula-variables")!;
@@ -93,6 +94,11 @@ function handleAction(action: string, value?: string) {
 // Mode toggle
 modeToggle.addEventListener("click", () => {
   calculator.classList.toggle("scientific");
+});
+
+// Theme toggle (pixel art skin)
+themeToggle.addEventListener("click", () => {
+  calculator.classList.toggle("pixelart");
 });
 
 // Formula mode toggle

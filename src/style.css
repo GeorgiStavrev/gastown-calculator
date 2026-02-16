@@ -303,3 +303,216 @@ button:active {
 .formula-item-delete:hover {
   background: rgba(255, 69, 58, 0.2);
 }
+
+/* Theme toggle */
+.theme-toggle {
+  position: absolute;
+  top: 10px;
+  left: 90px;
+  width: auto;
+  height: auto;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: #3a3a3c;
+  color: #8e8e93;
+  letter-spacing: 0.5px;
+}
+
+.calculator.pixelart .theme-toggle {
+  background: #e040fb;
+  color: #fff;
+}
+
+/* ===== PIXEL ART SKIN ===== */
+
+.calculator.pixelart {
+  font-family: "Courier New", "Lucida Console", monospace;
+  background: #1a1a2e;
+  border-radius: 0;
+  padding: 16px;
+  box-shadow:
+    4px 4px 0 #0f0f23,
+    -2px -2px 0 #3a3a5c;
+  border: 3px solid #e040fb;
+  image-rendering: pixelated;
+}
+
+.calculator.pixelart .display {
+  background: #0a0a1a;
+  border-radius: 0;
+  border: 2px solid #39ff14;
+  box-shadow: inset 0 0 12px rgba(57, 255, 20, 0.15);
+}
+
+.calculator.pixelart .display-value {
+  color: #39ff14;
+  font-family: "Courier New", "Lucida Console", monospace;
+  font-weight: 700;
+  text-shadow: 0 0 6px rgba(57, 255, 20, 0.5);
+}
+
+.calculator.pixelart button {
+  border-radius: 0;
+  border: 2px solid;
+  font-family: "Courier New", "Lucida Console", monospace;
+  font-weight: 700;
+  transition: none;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
+}
+
+.calculator.pixelart button:active {
+  filter: none;
+  box-shadow: none;
+  transform: translate(2px, 2px);
+}
+
+.calculator.pixelart .btn-digit {
+  background: #16213e;
+  color: #00d4ff;
+  border-color: #00d4ff;
+}
+
+.calculator.pixelart .btn-operator {
+  background: #e040fb;
+  color: #fff;
+  border-color: #ff79c6;
+}
+
+.calculator.pixelart .btn-operator.active {
+  background: #ff79c6;
+  color: #1a1a2e;
+}
+
+.calculator.pixelart .btn-function {
+  background: #0f3460;
+  color: #ffd700;
+  border-color: #ffd700;
+}
+
+.calculator.pixelart .btn-zero {
+  border-radius: 0;
+}
+
+.calculator.pixelart .mode-toggle {
+  border-radius: 0;
+  background: #16213e;
+  color: #00d4ff;
+  border: 1px solid #00d4ff;
+}
+
+.calculator.pixelart.scientific .mode-toggle {
+  background: #e040fb;
+  color: #fff;
+  border-color: #ff79c6;
+}
+
+.calculator.pixelart .theme-toggle {
+  border-radius: 0;
+  border: 1px solid #e040fb;
+}
+
+.calculator.pixelart .btn-scientific {
+  background: #0f3460;
+  color: #39ff14;
+  border-color: #39ff14;
+  border-radius: 0;
+  border-width: 2px;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
+}
+
+.calculator.pixelart .scientific-buttons {
+  gap: 8px;
+}
+
+.calculator.pixelart .buttons {
+  gap: 8px;
+}
+
+/* Pixel art formula panel */
+.calculator.pixelart .formula-input-row input {
+  background: #0a0a1a;
+  border: 2px solid #39ff14;
+  border-radius: 0;
+  color: #39ff14;
+  font-family: "Courier New", "Lucida Console", monospace;
+}
+
+.calculator.pixelart .formula-input-row input:focus {
+  border-color: #e040fb;
+  box-shadow: 0 0 6px rgba(224, 64, 251, 0.3);
+}
+
+.calculator.pixelart .formula-var {
+  background: #0a0a1a;
+  border-radius: 0;
+  border: 1px solid #00d4ff;
+}
+
+.calculator.pixelart .formula-var label {
+  color: #00d4ff;
+}
+
+.calculator.pixelart .formula-var input {
+  border: 1px solid #00d4ff;
+  border-radius: 0;
+  color: #39ff14;
+}
+
+.calculator.pixelart .formula-var input:focus {
+  border-color: #e040fb;
+}
+
+.calculator.pixelart .btn-formula {
+  border-radius: 0;
+  border: 2px solid;
+  font-family: "Courier New", "Lucida Console", monospace;
+  font-weight: 700;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
+}
+
+.calculator.pixelart .btn-formula:active {
+  box-shadow: none;
+  transform: translate(2px, 2px);
+}
+
+.calculator.pixelart #formula-eval {
+  background: #0f3460;
+  color: #39ff14;
+  border-color: #39ff14;
+}
+
+.calculator.pixelart #formula-save {
+  background: #0f3460;
+  color: #e040fb;
+  border-color: #e040fb;
+}
+
+.calculator.pixelart .formula-item {
+  background: #0a0a1a;
+  border-radius: 0;
+  border: 1px solid #16213e;
+}
+
+.calculator.pixelart .formula-item:hover {
+  background: #16213e;
+  border-color: #00d4ff;
+}
+
+.calculator.pixelart .formula-item-name {
+  color: #e040fb;
+}
+
+.calculator.pixelart .formula-item-expr {
+  color: #39ff14;
+  font-family: "Courier New", "Lucida Console", monospace;
+}
+
+.calculator.pixelart .formula-item-delete {
+  color: #ff4444;
+}
+
+.calculator.pixelart .formula-item-delete:hover {
+  background: rgba(255, 68, 68, 0.2);
+}
