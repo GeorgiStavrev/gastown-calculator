@@ -21,6 +21,8 @@ import {
 
 let state: CalculatorState = createInitialState();
 let activeOperator: string | null = null;
+const history: CalculatorState[] = [];
+const MAX_HISTORY = 100;
 
 const display = document.getElementById("display")!;
 const calculator = document.querySelector(".calculator")!;
@@ -31,6 +33,7 @@ const formulaVariables = document.getElementById("formula-variables")!;
 const formulaList = document.getElementById("formula-list")!;
 const formulaEval = document.getElementById("formula-eval")!;
 const formulaSave = document.getElementById("formula-save")!;
+const undoBtn = document.getElementById("undo-btn")!;
 
 function updateDisplay() {
   display.textContent = formatDisplay(state.display);
@@ -39,6 +42,24 @@ function updateDisplay() {
     const value = (btn as HTMLElement).dataset.value;
     btn.classList.toggle("active", value === activeOperator);
   });
+
+  undoBtn.classList.toggle("disabled", history.length === 0);
+}
+
+function pushHistory() {
+  history.push(state);
+  if (history.length > MAX_HISTORY) {
+    history.shift();
+  }
+}
+
+function undo() {
+  const prev = history.pop();
+  if (prev) {
+    state = prev;
+    activeOperator = state.operator;
+    updateDisplay();
+  }
 }
 
 function formatDisplay(value: string): string {
@@ -55,6 +76,13 @@ function formatDisplay(value: string): string {
 }
 
 function handleAction(action: string, value?: string) {
+  if (action === "undo") {
+    undo();
+    return;
+  }
+
+  pushHistory();
+
   switch (action) {
     case "digit":
       state = appendDigit(state, value!);
@@ -203,6 +231,12 @@ function renderFormulaList() {
   }
 }
 
+// Undo button
+undoBtn.addEventListener("click", () => {
+  handleAction("undo");
+});
+
+
 // Button click handler (covers both basic and scientific grids)
 document.querySelectorAll(".buttons, .scientific-buttons").forEach((grid) => {
   grid.addEventListener("click", (e) => {
@@ -234,5 +268,8 @@ document.addEventListener("keydown", (e) => {
     handleAction("clear");
   } else if (e.key === "Backspace") {
     handleAction("clear");
+  } else if (e.key === "z" && (e.ctrlKey || e.metaKey)) {
+    e.preventDefault();
+    handleAction("undo");
   }
 });

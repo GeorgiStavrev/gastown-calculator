@@ -215,4 +215,94 @@ describe("calculator", () => {
       expect(state.display).toBe("1");
     });
   });
+
+  describe("undo pattern (history stack over immutable state)", () => {
+    it("can restore previous state after digit input", () => {
+      const history: ReturnType<typeof createInitialState>[] = [];
+      let state = createInitialState();
+
+      history.push(state);
+      state = appendDigit(state, "5");
+
+      history.push(state);
+      state = appendDigit(state, "3");
+
+      expect(state.display).toBe("53");
+
+      // Undo last digit
+      state = history.pop()!;
+      expect(state.display).toBe("5");
+
+      // Undo first digit
+      state = history.pop()!;
+      expect(state.display).toBe("0");
+    });
+
+    it("can undo after evaluate", () => {
+      const history: ReturnType<typeof createInitialState>[] = [];
+      let state = createInitialState();
+
+      history.push(state);
+      state = appendDigit(state, "5");
+
+      history.push(state);
+      state = setOperator(state, "+");
+
+      history.push(state);
+      state = appendDigit(state, "3");
+
+      history.push(state);
+      state = evaluate(state);
+
+      expect(state.display).toBe("8");
+
+      // Undo evaluate - back to "3" (second operand entered)
+      state = history.pop()!;
+      expect(state.display).toBe("3");
+    });
+
+    it("can undo after clear", () => {
+      const history: ReturnType<typeof createInitialState>[] = [];
+      let state = createInitialState();
+
+      history.push(state);
+      state = appendDigit(state, "7");
+
+      history.push(state);
+      state = clear();
+
+      expect(state.display).toBe("0");
+
+      // Undo clear - back to "7"
+      state = history.pop()!;
+      expect(state.display).toBe("7");
+    });
+
+    it("undo on empty history is a no-op", () => {
+      const history: ReturnType<typeof createInitialState>[] = [];
+      const state = createInitialState();
+
+      const prev = history.pop();
+      expect(prev).toBeUndefined();
+      expect(state.display).toBe("0");
+    });
+
+    it("preserves operator state through undo", () => {
+      const history: ReturnType<typeof createInitialState>[] = [];
+      let state = createInitialState();
+
+      history.push(state);
+      state = appendDigit(state, "5");
+
+      history.push(state);
+      state = setOperator(state, "+");
+
+      expect(state.operator).toBe("+");
+
+      // Undo operator - back to "5" with no operator
+      state = history.pop()!;
+      expect(state.display).toBe("5");
+      expect(state.operator).toBeNull();
+    });
+  });
 });

@@ -118,6 +118,28 @@ button:active {
   color: #fff;
 }
 
+/* Undo button */
+.btn-undo {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  width: auto;
+  height: auto;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  background: #3a3a3c;
+  color: #fff;
+  letter-spacing: 0.5px;
+  transition: opacity 0.15s;
+}
+
+.btn-undo.disabled {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
 /* Scientific buttons */
 .scientific-buttons {
   display: none;
