@@ -1,0 +1,23 @@
+{
+  "name": "gastown-calculator",
+  "version": "1.0.0",
+  "description": "A web-based calculator",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GeorgiStavrev/gastown-calculator.git"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^5.9.3",
+    "vite": "^7.3.1",
+    "vitest": "^4.0.18"
+  }
+}
