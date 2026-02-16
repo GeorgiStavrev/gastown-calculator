@@ -34,6 +34,7 @@ const formulaList = document.getElementById("formula-list")!;
 const formulaEval = document.getElementById("formula-eval")!;
 const formulaSave = document.getElementById("formula-save")!;
 const undoBtn = document.getElementById("undo-btn")!;
+const themeToggle = document.getElementById("theme-toggle")!;
 
 function updateDisplay() {
   display.textContent = formatDisplay(state.display);
@@ -234,6 +235,11 @@ function renderFormulaList() {
 // Undo button
 undoBtn.addEventListener("click", () => {
   handleAction("undo");
+});
+
+// Theme toggle
+themeToggle.addEventListener("click", () => {
+  calculator.classList.toggle("pixel");
 });
 
 

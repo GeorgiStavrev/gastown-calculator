@@ -325,3 +325,117 @@ button:active {
 .formula-item-delete:hover {
   background: rgba(255, 69, 58, 0.2);
 }
+
+/* Theme toggle */
+.theme-toggle {
+  position: absolute;
+  top: 10px;
+  left: 60px;
+  width: auto;
+  height: auto;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: #3a3a3c;
+  color: #8e8e93;
+  letter-spacing: 0.5px;
+}
+
+.calculator.pixel .theme-toggle {
+  background: #8bac0f;
+  color: #0f380f;
+  border-radius: 0;
+  box-shadow: 2px 2px 0 #306230;
+}
+
+/* Pixel Art Theme */
+.calculator.pixel {
+  background: #306230;
+  border-radius: 0;
+  box-shadow:
+    4px 4px 0 #0f380f,
+    -2px -2px 0 #8bac0f;
+  font-family: "Courier New", monospace;
+  image-rendering: pixelated;
+}
+
+.calculator.pixel .display {
+  background: #9bbc0f;
+  border-radius: 0;
+  border: 3px solid #0f380f;
+  box-shadow: inset 3px 3px 0 #8bac0f;
+}
+
+.calculator.pixel .display-value {
+  color: #0f380f;
+  font-family: "Courier New", monospace;
+  font-weight: 700;
+  font-size: 2rem;
+  letter-spacing: 2px;
+}
+
+.calculator.pixel .mode-toggle {
+  background: #8bac0f;
+  color: #0f380f;
+  border-radius: 0;
+  box-shadow: 2px 2px 0 #306230;
+}
+
+.calculator.pixel.scientific .mode-toggle {
+  background: #0f380f;
+  color: #9bbc0f;
+}
+
+.calculator.pixel button {
+  border-radius: 0;
+  transition: none;
+  font-family: "Courier New", monospace;
+  font-weight: 700;
+}
+
+.calculator.pixel button:active {
+  filter: none;
+  transform: translate(2px, 2px);
+  box-shadow: none !important;
+}
+
+.calculator.pixel .btn-digit {
+  background: #8bac0f;
+  color: #0f380f;
+  box-shadow: 3px 3px 0 #306230;
+}
+
+.calculator.pixel .btn-operator {
+  background: #0f380f;
+  color: #9bbc0f;
+  box-shadow: 3px 3px 0 #306230;
+}
+
+.calculator.pixel .btn-operator.active {
+  background: #9bbc0f;
+  color: #0f380f;
+}
+
+.calculator.pixel .btn-function {
+  background: #306230;
+  color: #9bbc0f;
+  border: 2px solid #0f380f;
+  box-shadow: 3px 3px 0 #0f380f;
+}
+
+.calculator.pixel .btn-zero {
+  border-radius: 0;
+}
+
+.calculator.pixel .btn-scientific {
+  background: #306230;
+  color: #9bbc0f;
+  border: 2px solid #0f380f;
+  box-shadow: 3px 3px 0 #0f380f;
+}
+
+.calculator.pixel .buttons,
+.calculator.pixel .scientific-buttons {
+  gap: 8px;
+}
