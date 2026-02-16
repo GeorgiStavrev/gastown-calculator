@@ -33,6 +33,7 @@ body {
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
+  position: relative;
 }
 
 .display-value {
@@ -94,4 +95,47 @@ button:active {
   width: 100%;
   justify-content: flex-start;
   padding-left: 26px;
+}
+
+/* Mode toggle */
+.mode-toggle {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: auto;
+  height: auto;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: #3a3a3c;
+  color: #8e8e93;
+  letter-spacing: 0.5px;
+}
+
+.calculator.scientific .mode-toggle {
+  background: #5e5ce6;
+  color: #fff;
+}
+
+/* Scientific buttons */
+.scientific-buttons {
+  display: none;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.calculator.scientific .scientific-buttons {
+  display: grid;
+}
+
+.btn-scientific {
+  background: #48484a;
+  color: #fff;
+  font-size: 0.95rem;
+}
+
+.btn-scientific sup {
+  font-size: 0.65rem;
 }

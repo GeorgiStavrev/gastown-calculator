@@ -8,6 +8,7 @@ import {
   clear,
   toggleSign,
   percentage,
+  applyScientific,
 } from "../calculator";
 
 describe("calculator", () => {
@@ -137,6 +138,81 @@ describe("calculator", () => {
       state = appendDigit(state, "0");
       state = percentage(state);
       expect(state.display).toBe("0.5");
+    });
+  });
+
+  describe("scientific functions", () => {
+    it("sin(0) = 0", () => {
+      const state = applyScientific(createInitialState(), "sin");
+      expect(state.display).toBe("0");
+    });
+
+    it("cos(0) = 1", () => {
+      const state = applyScientific(createInitialState(), "cos");
+      expect(state.display).toBe("1");
+    });
+
+    it("tan(0) = 0", () => {
+      const state = applyScientific(createInitialState(), "tan");
+      expect(state.display).toBe("0");
+    });
+
+    it("ln(1) = 0", () => {
+      let state = appendDigit(createInitialState(), "1");
+      state = applyScientific(state, "ln");
+      expect(state.display).toBe("0");
+    });
+
+    it("ln(0) = Error", () => {
+      const state = applyScientific(createInitialState(), "ln");
+      expect(state.display).toBe("Error");
+    });
+
+    it("log(100) = 2", () => {
+      let state = appendDigit(createInitialState(), "1");
+      state = appendDigit(state, "0");
+      state = appendDigit(state, "0");
+      state = applyScientific(state, "log");
+      expect(state.display).toBe("2");
+    });
+
+    it("log(0) = Error", () => {
+      const state = applyScientific(createInitialState(), "log");
+      expect(state.display).toBe("Error");
+    });
+
+    it("sqrt(9) = 3", () => {
+      let state = appendDigit(createInitialState(), "9");
+      state = applyScientific(state, "sqrt");
+      expect(state.display).toBe("3");
+    });
+
+    it("sqrt(-1) = Error", () => {
+      let state = appendDigit(createInitialState(), "1");
+      state = toggleSign(state);
+      state = applyScientific(state, "sqrt");
+      expect(state.display).toBe("Error");
+    });
+
+    it("square(5) = 25", () => {
+      let state = appendDigit(createInitialState(), "5");
+      state = applyScientific(state, "square");
+      expect(state.display).toBe("25");
+    });
+
+    it("2^10 = 1024 (power operator)", () => {
+      let state = appendDigit(createInitialState(), "2");
+      state = setOperator(state, "^");
+      state = appendDigit(state, "1");
+      state = appendDigit(state, "0");
+      state = evaluate(state);
+      expect(state.display).toBe("1024");
+    });
+
+    it("0^0 = 1", () => {
+      let state = setOperator(createInitialState(), "^");
+      state = evaluate(state);
+      expect(state.display).toBe("1");
     });
   });
 });

@@ -1,4 +1,4 @@
-export type Operator = "+" | "-" | "*" | "/";
+export type Operator = "+" | "-" | "*" | "/" | "^";
 
 export interface CalculatorState {
   display: string;
@@ -103,6 +103,9 @@ export function evaluate(state: CalculatorState): CalculatorState {
     case "/":
       result = curr === 0 ? NaN : prev / curr;
       break;
+    case "^":
+      result = Math.pow(prev, curr);
+      break;
   }
 
   const display = isNaN(result) ? "Error" : String(result);
@@ -142,5 +145,48 @@ export function percentage(state: CalculatorState): CalculatorState {
     ...state,
     currentOperand: display,
     display,
+  };
+}
+
+export function applyScientific(
+  state: CalculatorState,
+  fn: string
+): CalculatorState {
+  const value = parseFloat(state.currentOperand);
+  let result: number;
+
+  switch (fn) {
+    case "sin":
+      result = Math.sin(value);
+      break;
+    case "cos":
+      result = Math.cos(value);
+      break;
+    case "tan":
+      result = Math.tan(value);
+      break;
+    case "ln":
+      result = value <= 0 ? NaN : Math.log(value);
+      break;
+    case "log":
+      result = value <= 0 ? NaN : Math.log10(value);
+      break;
+    case "sqrt":
+      result = value < 0 ? NaN : Math.sqrt(value);
+      break;
+    case "square":
+      result = value * value;
+      break;
+    default:
+      return state;
+  }
+
+  const display = isNaN(result) ? "Error" : String(result);
+
+  return {
+    ...state,
+    currentOperand: display,
+    display,
+    shouldResetDisplay: true,
   };
 }

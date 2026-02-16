@@ -9,7 +9,18 @@
   <body>
     <div class="calculator">
       <div class="display">
+        <button class="mode-toggle" id="mode-toggle">Sci</button>
         <span class="display-value" id="display">0</span>
+      </div>
+      <div class="scientific-buttons">
+        <button class="btn-scientific" data-action="scientific" data-value="sin">sin</button>
+        <button class="btn-scientific" data-action="scientific" data-value="cos">cos</button>
+        <button class="btn-scientific" data-action="scientific" data-value="tan">tan</button>
+        <button class="btn-scientific" data-action="scientific" data-value="ln">ln</button>
+        <button class="btn-scientific" data-action="scientific" data-value="sqrt">&radic;x</button>
+        <button class="btn-scientific" data-action="scientific" data-value="square">x&sup2;</button>
+        <button class="btn-scientific" data-action="operator" data-value="^">x<sup>y</sup></button>
+        <button class="btn-scientific" data-action="scientific" data-value="log">log</button>
       </div>
       <div class="buttons">
         <button class="btn-function" data-action="clear">AC</button>

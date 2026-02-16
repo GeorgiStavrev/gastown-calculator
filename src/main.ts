@@ -9,12 +9,15 @@ import {
   clear,
   toggleSign,
   percentage,
+  applyScientific,
 } from "./calculator";
 
 let state: CalculatorState = createInitialState();
 let activeOperator: string | null = null;
 
 const display = document.getElementById("display")!;
+const calculator = document.querySelector(".calculator")!;
+const modeToggle = document.getElementById("mode-toggle")!;
 
 function updateDisplay() {
   display.textContent = formatDisplay(state.display);
@@ -66,18 +69,29 @@ function handleAction(action: string, value?: string) {
     case "percentage":
       state = percentage(state);
       break;
+    case "scientific":
+      state = applyScientific(state, value!);
+      activeOperator = null;
+      break;
   }
   updateDisplay();
 }
 
-// Button click handler
-document.querySelector(".buttons")!.addEventListener("click", (e) => {
-  const btn = (e.target as HTMLElement).closest("button");
-  if (!btn) return;
+// Mode toggle
+modeToggle.addEventListener("click", () => {
+  calculator.classList.toggle("scientific");
+});
 
-  const action = btn.dataset.action!;
-  const value = btn.dataset.value;
-  handleAction(action, value);
+// Button click handler (covers both basic and scientific grids)
+document.querySelectorAll(".buttons, .scientific-buttons").forEach((grid) => {
+  grid.addEventListener("click", (e) => {
+    const btn = (e.target as HTMLElement).closest("button");
+    if (!btn) return;
+
+    const action = btn.dataset.action!;
+    const value = btn.dataset.value;
+    handleAction(action, value);
+  });
 });
 
 // Keyboard support
